@@ -1,3 +1,63 @@
+MaKey MaKey: Flexible
+=====================
+
+This is a version of the MaKey MaKey firmware which (will be) updated to include several optional alterations, in a manner which are configurable per input:
+* Option for up to 3 keys being pressed per input (IE for easily triggering complex hotkeys from the MaKey MaKey).
+* Option for inputs to use Capacative Touch (IE so you don't need to be grounded to trigger the MaKey MaKey input).
+* Option for reverse polarity (IE to trigger keys when an input circuit is _broken_ instead of _grounded_).
+* Any combination of the above (IE to trigger multiple keys while capacitive touch has been broken).
+
+The goal is to improve the number and types of projects which can be achieved with a simple settings.h adjustment.
+
+Note: Although I've forked the entire sparkfun MM repository, you are probably only interested in the code in the ["makey_makey" folder](./firmware/Arduino/makey_makey).
+
+Also: I had to switch the pin numbers for 'left' and 'right' to map correctly for the JoyLabz version of the board I have; if you find left/right are oppositely mapped for you, find the int pinNumbers and switch the positions of the "15, 13," to "13, 15,".
+
+## Key Combos
+
+Many times, users have asked for a MaKey MaKey solution for triggering multiple keystrokes per input.
+(IE http://www.makeymakey.com/forums/index.php?topic=5621.0)
+To use this feature, simply switch to settings.h, and adjust the first 3 columns to configure key combinations as desired.
+For instance, setting the first three values in the table to KEY_LEFT_CTRL, KEY_LEFT_SHIFT, 's' means that Control+Shift+S will be sent when the "Up" pin is ungrounded.
+One example of where this really helps is driving existing software with the MaKey MaKey, where established hotkeys frequently use those modifier keys.
+
+Note that the 'release' of one pin will cause 'release' of all individual associated keys.
+Consider settings where you have two pins bound to (KEY_LEFT_CTRL, KEY_LEFT_SHIFT, 's') and (KEY_LEFT_CTRL, 'o').
+Then when you ground both inputs at the same time, you will be simulating 'held' keys of (KEY_LEFT_CTRL, KEY_LEFT_SHIFT, 's', and 'o').
+When you release the second input, you will only be simulating hold of (KEY_LEFT_SHIFT, 's'). This is currently by design.
+
+## Capacitive Touch
+
+TODO: Built this as a Capacitive Presentation Clicker project on CodePlex but will be migrating it into this code base as a simple settings option soon.
+
+Another common request for MaKey MaKey is the ability to trigger it without being grounded.
+This implementation is based on the technique described at: http://playground.arduino.cc/Code/CapacitiveSensor.
+While this gets the job done, for some unknown reason it turns out to be extremely slow when applied to many inputs.
+(I've raised this issue at [the MM forums](http://www.makeymakey.com/forums/index.php?topic=15304.msg17317#msg17317), but so far nobody has conveyed any insight.)
+So for now, try to limit how many inputs you place in Capacitive Touch mode.
+
+## Reverse Polarity
+
+Sometimes you want to trigger a key or action when a ground is broken rather than acquired.
+[One example](http://www.makeymakey.com/forums/index.php?topic=1282.0) would be to make a video game character jump when you physically jump, separating your feet from an input pad.
+Turn this option on for the pins you desire.
+Use sparingly though; for example, after you step off the input and try to use the computer the MaKey MaKey is attached to, it will still be pretending that key is held because the ground is broken.
+If you find yourself in this situation, you can remedy it quickly by regrounding the input while you interact with the PC, or by simply disconnecting the MaKey MaKey.
+Note that it will not automatically start with the key being held; you have to complete the circuit at least once first.
+This is by design; it gives you time to reprogram the MaKey MaKey without having keys automatically spammed at you, etc.
+
+.
+
+.
+
+Everything that follows here is stock readme from the base repository (maintained for diffing and merging purposes).
+
+.
+
+.
+
+.
+
 MaKey MaKey
 ===========
 

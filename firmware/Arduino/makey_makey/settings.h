@@ -1,46 +1,42 @@
 #include "Arduino.h"
 
-/*
-/////////////////////////////////////////////////////////////////////////
-// KEY MAPPINGS: WHICH KEY MAPS TO WHICH PIN ON THE MAKEY MAKEY BOARD? //
-/////////////////////////////////////////////////////////////////////////
-  
-  - edit the keyCodes array below to change the keys sent by the MaKey MaKey for each input
-  - the comments tell you which input sends that key (for example, by default 'w' is sent by pin D5)
+/**************************
+*  KEY CODES AND OPTIONS  *
+***************************
+  - edit the keyCodes array below to change the keys sent by the MaKey MaKey for each input.
+  - the comments tell you which input sends that key (for example, by default 'w' is sent by pin D5).
   - change the keys by replacing them. for example, you can replace 'w' with any other individual letter,
-    number, or symbol on your keyboard
-  - you can also use codes for other keys such as modifier and function keys (see the
-    the list of additional key codes at the bottom of this file)
-
+    number, or symbol on your keyboard.
+  - you can also use codes for other keys such as modifier and function keys (see a list of additional key
+    codes at the bottom of this file).
+  - you may wish to use the 'INSERT' mode of your keyboard to retype this area without changing whitespace.
+  - up to three simultaneous keys can be sent per input (IE Ctrl+Shift+S) by configuring all 3 outputs for
+    one input to non-zero keys.
+  - use 1 for reverse (send keys when ground is broken instead of when established).
+  - use 1 for capacitive (to trigger when something capacitive, IE skin, is touching the input w/o ground).
+  - try not to use more than a couple capacitive touch inputs, as they get noticably slow when using many.
 */
-
-int keyCodes[NUM_INPUTS] = {
-  // top side of the makey makey board
- 
-  KEY_UP_ARROW,      // up arrow pad
-  KEY_DOWN_ARROW,    // down arrow pad
-  KEY_LEFT_ARROW,    // left arrow pad
-  KEY_RIGHT_ARROW,   // right arrow pad
-  ' ',               // space button pad
-  MOUSE_LEFT,        // click button pad
-  
-  // female header on the back left side
-  
-  'w',                // pin D5
-  'a',                // pin D4
-  's',                // pin D3
-  'd',                // pin D2
-  'f',                // pin D1
-  'g',                // pin D0
-  
-  // female header on the back right side
-  
-  MOUSE_MOVE_UP,      // pin A5
-  MOUSE_MOVE_DOWN,    // pin A4
-  MOUSE_MOVE_LEFT,    // pin A3
-  MOUSE_MOVE_RIGHT,   // pin A2
-  MOUSE_LEFT,         // pin A1
-  MOUSE_RIGHT         // pin A0
+int keyCodesAndOptions[NUM_INPUTS][OPTIONS_PER_INPUT] =
+{
+  // Output 1,         Output 2,         Output 3,         Reverse?   Capacitive?   Position on MM
+  {  KEY_LEFT_CTRL,    KEY_LEFT_SHIFT,   's',              1,         0,     },  // up arrow pad
+  {  KEY_DOWN_ARROW,   0,                0,                0,         1,     },  // down arrow pad
+  {  KEY_LEFT_ARROW,   0,                0,                0,         0,     },  // left arrow pad
+  {  KEY_RIGHT_ARROW,  0,                0,                0,         0,     },  // right arrow pad
+  {  ' ',              0,                0,                0,         0,     },  // space button pad
+  {  KEY_LEFT_CTRL,    0,                0,                0,         0,     },  // click button pad
+  {  'w',              0,                0,                0,         0,     },  // pin D5
+  {  'a',              0,                0,                0,         0,     },  // pin D4
+  {  's',              0,                0,                0,         0,     },  // pin D3
+  {  'd',              0,                0,                0,         0,     },  // pin D2
+  {  'f',              0,                0,                0,         0,     },  // pin D1
+  {  'g',              0,                0,                0,         0,     },  // pin D0
+  {  MOUSE_MOVE_UP,    0,                0,                0,         0,     },  // pin A5
+  {  MOUSE_MOVE_DOWN,  0,                0,                0,         0,     },  // pin A4
+  {  MOUSE_MOVE_LEFT,  0,                0,                0,         0,     },  // pin A3
+  {  MOUSE_MOVE_RIGHT, 0,                0,                0,         0,     },  // pin A2
+  {  MOUSE_LEFT,       0,                0,                0,         0,     },  // pin A1
+  {  MOUSE_RIGHT,      0,                0,                0,         0,     },  // pin A0
 };
 
 ///////////////////////////
@@ -78,7 +74,6 @@ int keyCodes[NUM_INPUTS] = {
 #define MOUSE_MAX_PIXELS              10   // Max pixels per step for mouse movement
 
 /*
-
 ///////////////////////////
 // ADDITIONAL KEY CODES ///
 ///////////////////////////
@@ -86,38 +81,23 @@ int keyCodes[NUM_INPUTS] = {
 - you can use these codes in the keyCodes array above
 - to get modifier keys, function keys, etc 
 
-KEY_LEFT_CTRL
-KEY_LEFT_SHIFT		
-KEY_LEFT_ALT		
-KEY_LEFT_GUI		
-KEY_RIGHT_CTRL		
-KEY_RIGHT_SHIFT		
-KEY_RIGHT_ALT	
-KEY_RIGHT_GUI		
+KEY_LEFT_CTRL,  KEY_RIGHT_CTRL
+KEY_LEFT_SHIFT, KEY_RIGHT_SHIFT
+KEY_LEFT_ALT,   KEY_RIGHT_ALT
+KEY_LEFT_GUI,   KEY_RIGHT_GUI
+KEY_F1, KEY_F2, KEY_F3, KEY_F4, KEY_F5, KEY_F6, KEY_F7, KEY_F8, KEY_F9, KEY_F10, KEY_F11, KEY_F12	
 
-KEY_BACKSPACE		
-KEY_TAB				
-KEY_RETURN			
-KEY_ESC				
-KEY_INSERT			
-KEY_DELETE			
-KEY_PAGE_UP			
-KEY_PAGE_DOWN		
-KEY_HOME
-KEY_END				
-KEY_CAPS_LOCK	
-	
-KEY_F1				
-KEY_F2				
-KEY_F3				
-KEY_F4				
-KEY_F5				
-KEY_F6				
-KEY_F7				
-KEY_F8				
-KEY_F9				
-KEY_F10
-KEY_F11				
-KEY_F12			
+KEY_PAGE_UP,
+KEY_PAGE_DOWN
+KEY_HOME,
+KEY_END
+
+KEY_BACKSPACE
+KEY_TAB
+KEY_RETURN
+KEY_ESC
+KEY_INSERE
+KEY_DELETE
+KEY_CAPS_LOCK
 
 */
