@@ -19,8 +19,8 @@
 int keyCodesAndOptions[NUM_INPUTS][OPTIONS_PER_INPUT] =
 {
   // Output 1,         Output 2,         Output 3,         Reverse?   Capacitive?   Position on MM
-  {  KEY_LEFT_CTRL,    KEY_LEFT_SHIFT,   's',              1,         0,     },  // up arrow pad
-  {  KEY_DOWN_ARROW,   0,                0,                0,         1,     },  // down arrow pad
+  {  KEY_UP_ARROW,     0,                0,                0,         0,     },  // up arrow pad
+  {  KEY_DOWN_ARROW,   0,                0,                0,         0,     },  // down arrow pad
   {  KEY_LEFT_ARROW,   0,                0,                0,         0,     },  // left arrow pad
   {  KEY_RIGHT_ARROW,  0,                0,                0,         0,     },  // right arrow pad
   {  ' ',              0,                0,                0,         0,     },  // space button pad
