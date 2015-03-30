@@ -11,6 +11,9 @@ The goal is to improve the number and types of projects which can be achieved wi
 
 Note: Although I've forked the entire sparkfun MM repository, you are probably only interested in the code in the ["makey_makey" folder](./firmware/Arduino/makey_makey).
 
+Note: I currently get the impression that MaKey MaKeys at version 1.2 and beyond do not allow for reprogramming features in this fashion; just key mappings through a web UI.
+So if you want to play with these things, you may need to find an older MaKey MaKey, or experiment with one of the other true-Arduino builds available.
+
 ## Key Combos
 
 Many times, users [have asked for](http://www.makeymakey.com/forums/index.php?topic=5621.0) a MaKey MaKey solution for triggering multiple keystrokes per input.
@@ -30,18 +33,19 @@ Sometimes you want to trigger a key or action when a ground is broken rather tha
 Turn this option on for the pins you desire.
 Use sparingly though; for example, after you step off the input and try to use the computer the MaKey MaKey is attached to, it will still be pretending that key is held because the ground is broken.
 If you find yourself in this situation, you can remedy it quickly by regrounding the input while you interact with the PC, or by simply disconnecting the MaKey MaKey.
+
 Note that it will not automatically start with the key being held; you have to complete the circuit at least once first.
 This is by design; it gives you time to reprogram the MaKey MaKey without having keys automatically spammed at you, etc.
 
 ## Capacitive Touch
 
-TODO: Built this as a Capacitive Presentation Clicker project on CodePlex but will be migrating it into this code base as a simple settings option soon.
-
 Another common request for MaKey MaKey is the ability to trigger it without being grounded.
-This implementation is based on the technique described at: http://playground.arduino.cc/Code/CapacitiveSensor.
-While this gets the job done, for some unknown reason it turns out to be extremely slow when applied to many inputs.
+This implementation is based on the technique [described here](http://playground.arduino.cc/Code/CapacitiveSensor).
+This is a nice solution for one or two inputs. For example, as PowerPoint Presentation Clickers (which just needs Left and Right mapped), or for a couple extra keys to hit while you do normal computer work.
+
+Note that this technique turns out to be extremely slow when applied to many inputs.
 (I've raised this issue at [the MM forums](http://www.makeymakey.com/forums/index.php?topic=15304.msg17317#msg17317), but so far nobody has conveyed any insight.)
-So for now, try to limit how many inputs you place in Capacitive Touch mode.
+So for now, try to limit how many inputs you place in Capacitive Touch mode; I get good results with 2 inputs but input is noticably laggy at 4 or more.
 
 .
 
