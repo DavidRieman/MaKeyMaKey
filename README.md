@@ -11,8 +11,6 @@ The goal is to improve the number and types of projects which can be achieved wi
 
 Note: Although I've forked the entire sparkfun MM repository, you are probably only interested in the code in the ["makey_makey" folder](./firmware/Arduino/makey_makey).
 
-Also: I had to switch the pin numbers for 'left' and 'right' to map correctly for the JoyLabz version of the board I have; if you find left/right are oppositely mapped for you, find the int pinNumbers and switch the positions of the "15, 13," to "13, 15,".
-
 ## Key Combos
 
 Many times, users have asked for a MaKey MaKey solution for triggering multiple keystrokes per input.
