@@ -2,9 +2,9 @@ MaKey MaKey: Flexible
 =====================
 
 This is a version of the MaKey MaKey firmware which (will be) updated to include several optional alterations, in a manner which are configurable per input:
-* Option for up to 3 keys being pressed per input (IE for easily triggering complex hotkeys from the MaKey MaKey).
-* Option for inputs to use Capacative Touch (IE so you don't need to be grounded to trigger the MaKey MaKey input).
-* Option for reverse polarity (IE to trigger keys when an input circuit is _broken_ instead of _grounded_).
+* __Key Combos__: Option for up to 3 keys being pressed per input (IE for easily triggering complex hotkeys from the MaKey MaKey).
+* __Reverse Polarity__: Option for reverse polarity (IE to trigger keys when an input circuit is _broken_ instead of _grounded_).
+* __Capacitive Touch__: Option for inputs to use Capacative Touch (IE so you don't need to be grounded to trigger the MaKey MaKey input).
 * Any combination of the above (IE to trigger multiple keys while capacitive touch has been broken).
 
 The goal is to improve the number and types of projects which can be achieved with a simple settings.h adjustment.
@@ -26,16 +26,6 @@ Consider settings where you have two pins bound to (KEY_LEFT_CTRL, KEY_LEFT_SHIF
 Then when you ground both inputs at the same time, you will be simulating 'held' keys of (KEY_LEFT_CTRL, KEY_LEFT_SHIFT, 's', and 'o').
 When you release the second input, you will only be simulating hold of (KEY_LEFT_SHIFT, 's'). This is currently by design.
 
-## Capacitive Touch
-
-TODO: Built this as a Capacitive Presentation Clicker project on CodePlex but will be migrating it into this code base as a simple settings option soon.
-
-Another common request for MaKey MaKey is the ability to trigger it without being grounded.
-This implementation is based on the technique described at: http://playground.arduino.cc/Code/CapacitiveSensor.
-While this gets the job done, for some unknown reason it turns out to be extremely slow when applied to many inputs.
-(I've raised this issue at [the MM forums](http://www.makeymakey.com/forums/index.php?topic=15304.msg17317#msg17317), but so far nobody has conveyed any insight.)
-So for now, try to limit how many inputs you place in Capacitive Touch mode.
-
 ## Reverse Polarity
 
 Sometimes you want to trigger a key or action when a ground is broken rather than acquired.
@@ -45,6 +35,16 @@ Use sparingly though; for example, after you step off the input and try to use t
 If you find yourself in this situation, you can remedy it quickly by regrounding the input while you interact with the PC, or by simply disconnecting the MaKey MaKey.
 Note that it will not automatically start with the key being held; you have to complete the circuit at least once first.
 This is by design; it gives you time to reprogram the MaKey MaKey without having keys automatically spammed at you, etc.
+
+## Capacitive Touch
+
+TODO: Built this as a Capacitive Presentation Clicker project on CodePlex but will be migrating it into this code base as a simple settings option soon.
+
+Another common request for MaKey MaKey is the ability to trigger it without being grounded.
+This implementation is based on the technique described at: http://playground.arduino.cc/Code/CapacitiveSensor.
+While this gets the job done, for some unknown reason it turns out to be extremely slow when applied to many inputs.
+(I've raised this issue at [the MM forums](http://www.makeymakey.com/forums/index.php?topic=15304.msg17317#msg17317), but so far nobody has conveyed any insight.)
+So for now, try to limit how many inputs you place in Capacitive Touch mode.
 
 .
 
