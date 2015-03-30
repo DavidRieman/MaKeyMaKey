@@ -15,8 +15,7 @@ Also: I had to switch the pin numbers for 'left' and 'right' to map correctly fo
 
 ## Key Combos
 
-Many times, users have asked for a MaKey MaKey solution for triggering multiple keystrokes per input.
-(IE http://www.makeymakey.com/forums/index.php?topic=5621.0)
+Many times, users [have asked for](http://www.makeymakey.com/forums/index.php?topic=5621.0) a MaKey MaKey solution for triggering multiple keystrokes per input.
 To use this feature, simply switch to settings.h, and adjust the first 3 columns to configure key combinations as desired.
 For instance, setting the first three values in the table to KEY_LEFT_CTRL, KEY_LEFT_SHIFT, 's' means that Control+Shift+S will be sent when the "Up" pin is ungrounded.
 One example of where this really helps is driving existing software with the MaKey MaKey, where established hotkeys frequently use those modifier keys.
