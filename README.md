@@ -24,7 +24,7 @@ One example of where this really helps is driving existing software with the MaK
 Note that the 'release' of one pin will cause 'release' of all individual associated keys.
 Consider settings where you have two pins bound to (KEY_LEFT_CTRL, KEY_LEFT_SHIFT, 's') and (KEY_LEFT_CTRL, 'o').
 Then when you ground both inputs at the same time, you will be simulating 'held' keys of (KEY_LEFT_CTRL, KEY_LEFT_SHIFT, 's', and 'o').
-When you release the second input, you will only be simulating hold of (KEY_LEFT_SHIFT, 's'). This is currently by design.
+When you release the second input, you will only be simulating hold of (KEY_LEFT_SHIFT, 's'). This is currently by design; either both hotkeys will have been triggered, or they would have been interfering with each other anyway.
 
 ## Reverse Polarity
 
